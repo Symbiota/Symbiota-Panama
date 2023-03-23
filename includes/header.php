@@ -84,8 +84,8 @@
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=3" >Birds</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=4" >Fish</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=12">Insects &amp; Arachnids</a></li>
-						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=11" >Mammals</a></li>
-						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=17" >Marine Invertebrates</a></li>
+						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=11">Mammals</a></li>
+						<li><a href="https://invertebase.org/stri/projects/index.php?pid=4" target="_blank">Marine Invertebrates (InvertEBase)</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=10" >Plants</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=2" >Reptiles</a></li>
 					</ul>
