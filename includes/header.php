@@ -11,14 +11,6 @@
 	<div>
 		<div class="container">
 			<img style="margin-top:2%;width:300px;" src="<?php echo $CLIENT_ROOT; ?>/images/layout/logo_stri.svg">
-			<div id="quicksearchdiv" style="float:right">
-				<!-- -------------------------QUICK SEARCH SETTINGS--------------------------------------- -->
-				<form name="quicksearch" id="quicksearch" action="<?php echo $CLIENT_ROOT; ?>/taxa/index.php" method="get" onsubmit="return verifyQuickSearch(this);">
-					<div id="quicksearchtext">Search Taxon</div>
-					<input id="taxa" type="text" name="taxon" style="width: 225px">
-					<button name="formsubmit" id="quicksearchbutton" type="submit" value="Search Terms" style="margin-top: 2px">Search taxon</button>
-				</form>
-			</div>
 		</div>
 	</div>
 
