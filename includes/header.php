@@ -69,25 +69,21 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#" style="padding: 5px 12px 6px 12px">Taxonomic<br/>Inventories</a>
+					<a href="#" >Species Lists</a>
 					<ul>
+						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=20" >Barro Colorado Island</a></li>
+						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=21" >Bocas del Toro</a></li>
+						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=19" >Isla Coiba</a></li>
+						<li>----------------------</li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=18" >Algae</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=1" >Amphibians</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=3" >Birds</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=4" >Fishes</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=12">Insects &amp; Arachnids</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=11">Mammals</a></li>
-						<li><a href="https://invertebase.org/stri/projects/index.php?pid=4" target="_blank">Marine Invertebrates (InvertEBase)</a></li>
+						<li><a href="https://invertebase.org/stri/projects/index.php?pid=4" target="_blank">Marine Invertebrates (Invert-E-Base)</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=10" >Plants</a></li>
 						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=2" >Reptiles</a></li>
-					</ul>
-				</li>
-				<li>
-					<a href="#" style="padding: 5px 12px 6px 12px">Geographic<br/>Inventories</a>
-					<ul>
-						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=20" >Barro Colorado Island</a></li>
-						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=21" >Bocas del Toro</a></li>
-						<li><a href="<?php echo $CLIENT_ROOT; ?>/projects/index.php?pid=19" >Isla Coiba</a></li>
 					</ul>
 				</li>
 				<li>

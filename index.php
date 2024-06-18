@@ -27,10 +27,10 @@ header("Content-Type: text/html; charset=".$CHARSET);
 			<div class="hero-bg">
 				<div class="container">
 					<div class="seven columns">
-						<h1 style="margin: 0; font-size: 3rem; line-height: 1;">Welcome to the developing STRI Symbiota Portal</h1>
+						<h1 style="margin: 0; font-size: 3rem; line-height: 1;">Welcome to the Panama Biodiversity Portal</h1>
 						<p style="font-size: 1.2rem; line-height: 1.7;">
 							Using novel, bottom-up, and extensible software platforms and collaborative strategies, ASU and STRI will demonstrate the research and outreach benefits of
-							biodiversity data sharing. The STRI Portal will leverage the value of data sharing using information from different STRI sources about plants, insects, fish, reptiles, and birds.
+							biodiversity data sharing. The Panama Biodiversity Portal will leverage the value of data sharing using information from different STRI sources about plants, insects, fish, reptiles, and birds.
 						</p>
 					</div>
 					<!-- Slideshow -->
