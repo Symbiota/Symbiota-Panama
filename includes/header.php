@@ -1,11 +1,11 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="https://stri.si.edu/sites/default/files/favicon_1.ico" type="image/vnd.microsoft.icon" />
-	<link href="<?php echo $CLIENT_ROOT; ?>/css/quicksearch.css" type="text/css" rel="stylesheet" />
-	<script src="<?php echo $CLIENT_ROOT; ?>/js/symb/api.taxonomy.taxasuggest.js" type="text/javascript"></script>
+	<link rel="shortcut icon" href="<?= $CLIENT_ROOT; ?>/images/icons/favicon_1.ico" type="image/vnd.microsoft.icon" />
+	<link href="<?= $CLIENT_ROOT; ?>/css/quicksearch.css" type="text/css" rel="stylesheet" />
+	<script src="<?= $CLIENT_ROOT; ?>/js/symb/api.taxonomy.taxasuggest.js" type="text/javascript"></script>
 	<!-- Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Noto+Serif&display=swap" rel="stylesheet" />
-	<link href="https://stri.si.edu/sites/all/themes/stri/assets/fonts/STRI.css?pwa8c5" media="all" type="text/css" rel="stylesheet" />
+	<link href="<?= $CLIENT_ROOT; ?>/css/stri/fonts/STRI.css?pwa8c5" media="all" type="text/css" rel="stylesheet" />
 </head>
 <header>
 	<div>

@@ -14,6 +14,32 @@ header("Content-Type: text/html; charset=".$CHARSET);
 	<script src="js/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="js/jquery-ui-1.12.1/jquery-ui.js" type="text/javascript"></script>
 	<script src="js/jquery.slides.js"></script>
+	<style>
+		.hero-bg {
+			background-image: url(images/layout/research-landing.jpg);
+			background-repeat: no-repeat;
+			background-position: 50% 50%;
+			background-size: cover;
+			color: #FFFFFF;
+			line-height: 1.7;
+			margin-right: auto;
+			margin-left: auto;
+			padding-left: 15px;
+			padding-right: 15px;
+			overflow: hidden;
+			width: 100%;
+		}
+
+		@media (min-width: 790px) {
+			.hero-bg {
+				padding: 3rem 0;
+				margin-bottom: 0;
+				max-height: 100%;
+				width: 100%;
+				position: relative;
+			}
+		}
+	</style>
 </head>
 <body>
 	<?php
