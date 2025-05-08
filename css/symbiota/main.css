@@ -3,13 +3,13 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans&display=swap");
 @import "normalize.slim.css";
-@import "variables.css";
+@import "variables.css?ver=2d";
 
 
 /* Global styles
    ========================================================================== */
 html {
-  font-size: 16px; /* This is what 1 rem will be base off of */
+  font-size: 14px; /* This is what 1 rem will be base off of */
   height: 100%;
 }
 

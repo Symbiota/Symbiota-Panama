@@ -1,9 +1,29 @@
 <footer>
-	<div class="container" style="padding: 1rem 0">
-		<p>
-			<a href="https://www.nsf.gov" target="_blank"><img src="<?php echo $CLIENT_ROOT; ?>/images/layout/logo_nsf.gif" /></a>
-			<a href="https://biokic.asu.edu" target="_blank" title="Biodiversity Knowledge Integration Center"><img src="<?php echo $CLIENT_ROOT; ?>/images/layout/logo-asu-biokic.png" /></a>
-		</p>
+	<div class="logo-gallery">
+		<?php
+		//include($SERVER_ROOT . '/accessibility/module.php');
+		?>
+		<a href="https://www.nsf.gov" target="_blank" aria-label="<?= $LANG['F_VISIT_NSF'] ?>">
+			<img src="<?= $CLIENT_ROOT; ?>/images/layout/logo_nsf.gif" alt="<?= $LANG['F_NSF_LOGO'] ?>" />
+		</a>
+		<a href="http://idigbio.org" target="_blank" title="iDigBio" aria-label="<?= $LANG['F_VISIT_IDIGBIO'] ?>">
+			<img src="<?= $CLIENT_ROOT; ?>/images/layout/logo_idig.png" alt="<?= $LANG['F_IDIGBIO_LOGO'] ?>" />
+		</a>
+		<a href="https://biokic.asu.edu" target="_blank" title="<?= $LANG['F_BIOKIC'] ?>" aria-label="Visit BioKIC website">
+			<img src="<?= $CLIENT_ROOT; ?>/images/layout/logo-asu-biokic.png"  alt="<?= $LANG['F_BIOKIC_LOGO'] ?>" />
+		</a>
+		<a href="https://symbiota.org/" target="_blank" title="<?= $LANG['F_SSH'] ?>" aria-label="Visit Symbiota website">
+			<img src="<?= $CLIENT_ROOT; ?>/images/layout/SSH.png"  alt="<?= $LANG['F_SSH_LOGO'] ?>" />
+		</a>
 	</div>
-	<p>This project is supported by the National Science Foundation's Division of Environmental Biology through an award titled &quot;Advancing Revisionary Taxonomy and Systematics:  Integrative Research and Training in Tropical Taxonomy&quot; (<a href="http://www.nsf.gov/awardsearch/showAward?AWD_ID=1456674" target="_blank">DEB-1456674</a>). Any opinions, findings, and conclusions or recommendations expressed on this website are those of the authors and do not necessarily reflect the views of the National Science Foundation.</p>
+	<p>
+		<?= $LANG['F_NSF_AWARDS'] ?> <a href="https://www.nsf.gov/awardsearch/showAward?AWD_ID=" target="_blank">#------</a>.
+	</p>
+	<p>
+		<?= $LANG['F_MORE_INFO'] ?>, <a href="https://symbiota.org/docs" target="_blank" rel="noopener noreferrer"><?= $LANG['F_READ_DOCS'] ?></a> <?= $LANG['F_CONTACT'] ?>
+		<a href="https://symbiota.org/contact-the-support-hub/" target="_blank" rel="noopener noreferrer"><?= $LANG['F_SSH'] ?></a>.
+	</p>
+	<p>
+		<?= $LANG['F_POWERED_BY'] ?> <a href="https://symbiota.org/" target="_blank">Symbiota</a>.
+	</p>
 </footer>
