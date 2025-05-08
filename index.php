@@ -15,7 +15,7 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 	?>
 	<script src="js/jquery-3.7.1.min.js" type="text/javascript"></script>
 	<script src="js/jquery-ui.min.js" type="text/javascript"></script>
-	<script src="js/jquery.slides.js"></script>
+	<script src="js/jquery.slides.js?ver=1"></script>
 	<style>
 		.hero-bg {
 			background-image: url(images/layout/research-landing.jpg);
