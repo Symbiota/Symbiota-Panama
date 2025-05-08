@@ -1,17 +1,21 @@
 <?php
 include_once('config/symbini.php');
-if($LANG_TAG == 'en' || !file_exists($SERVER_ROOT.'/content/lang/templates/index.'.$LANG_TAG.'.php')) include_once($SERVER_ROOT.'/content/lang/templates/index.en.php');
-else include_once($SERVER_ROOT.'/content/lang/templates/index.'.$LANG_TAG.'.php');
+if($LANG_TAG != 'en' && file_exists($SERVER_ROOT.'/content/lang/templates/index.' . $LANG_TAG . '.php'))
+	include_once($SERVER_ROOT.'/content/lang/templates/index.' . $LANG_TAG . '.php');
+else include_once($SERVER_ROOT.'/content/lang/templates/index.en.php');
 header('Content-Type: text/html; charset=' . $CHARSET);
 ?>
 <!DOCTYPE html>
-<html lang="<?php echo $LANG_TAG ?>">
+<html lang="<?= $LANG_TAG ?>">
 <head>
-	<title><?php echo $DEFAULT_TITLE; ?> <?php echo $LANG['HOME']; ?></title>
+	<title><?= $DEFAULT_TITLE; ?> <?= $LANG['HOME']; ?></title>
 	<?php
 	include_once($SERVER_ROOT . '/includes/head.php');
 	include_once($SERVER_ROOT . '/includes/googleanalytics.php');
 	?>
+	<script src="js/jquery-3.7.1.min.js" type="text/javascript"></script>
+	<script src="js/jquery-ui.min.js" type="text/javascript"></script>
+	<script src="js/jquery.slides.js"></script>
 	<style>
 		.hero-bg {
 			background-image: url(images/layout/research-landing.jpg);
@@ -230,13 +234,13 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 				?>
 				<div style="margin:15px;">
 					<div style="font-size:130%;font-weight:bold;">
-						<?php echo $ootdGameTitle; ?>
+						<?= $ootdGameTitle; ?>
 					</div>
-					<a href="<?php echo $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?php echo $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
-						<img src="<?php echo $gameInfo['images'][0]; ?>" style="width:250px;border:0px;" />
+					<a href="<?= $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?= $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
+						<img src="<?= $gameInfo['images'][0]; ?>" style="width:250px;border:0px;" />
 					</a><br/>
-					<b>What is this <?php echo $ootdGameType; ?>?</b><br/>
-					<a href="<?php echo $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?php echo $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
+					<b>What is this <?= $ootdGameType; ?>?</b><br/>
+					<a href="<?= $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?= $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
 						Click here to test your knowledge
 					</a>
 				</div>
@@ -253,13 +257,13 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 				?>
 				<div style="margin:10px;">
 					<div style="font-size:130%;font-weight:bold;">
-						<?php echo $ootdGameTitle; ?>
+						<?= $ootdGameTitle; ?>
 					</div>
-					<a href="<?php echo $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?php echo $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
-						<img src="<?php echo $gameInfo['images'][0]; ?>" style="width:250px;border:0px;" />
+					<a href="<?= $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?= $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
+						<img src="<?= $gameInfo['images'][0]; ?>" style="width:250px;border:0px;" />
 					</a><br/>
-					<b>What is this <?php echo $ootdGameType; ?>?</b><br/>
-					<a href="<?php echo $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?php echo $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
+					<b>What is this <?= $ootdGameType; ?>?</b><br/>
+					<a href="<?= $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?= $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
 						Click here to test your knowledge
 					</a>
 				</div>
@@ -276,13 +280,13 @@ header('Content-Type: text/html; charset=' . $CHARSET);
 				?>
 				<div style="margin:10px;>
 					<div style="font-size:130%;font-weight:bold;">
-						<?php echo $ootdGameTitle; ?>
+						<?= $ootdGameTitle; ?>
 					</div>
-					<a href="<?php echo $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?php echo $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
-						<img src="<?php echo $gameInfo['images'][0]; ?>" style="width:250px;border:0px;" />
+					<a href="<?= $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?= $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
+						<img src="<?= $gameInfo['images'][0]; ?>" style="width:250px;border:0px;" />
 					</a><br/>
-					<b>What is this <?php echo $ootdGameType; ?>?</b><br/>
-					<a href="<?php echo $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?php echo $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
+					<b>What is this <?= $ootdGameType; ?>?</b><br/>
+					<a href="<?= $CLIENT_ROOT; ?>/games/ootd/index.php?oodid=<?= $oodID.'&cl='.$ootdGameChecklist.'&title='.$ootdGameTitle.'&type='.$ootdGameType; ?>">
 						Click here to test your knowledge
 					</a>
 				</div>

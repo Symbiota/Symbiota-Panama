@@ -1,6 +1,6 @@
 <meta name="viewport" content="initial-scale=1.0, user-scalable=yes" />
 <?php
-$CSS_VERSION = '3l';
+$CSS_VERSION = '4';
 ?>
 <link href="<?= $CSS_BASE_PATH ?>/symbiota/header.css?ver=<?= $CSS_VERSION ?>" type="text/css" rel="stylesheet">
 <link href="<?= $CSS_BASE_PATH ?>/symbiota/footer.css?ver=<?= $CSS_VERSION ?>" type="text/css" rel="stylesheet">
