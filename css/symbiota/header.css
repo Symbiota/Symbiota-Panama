@@ -283,7 +283,7 @@ ul.menu > ul li{
   }
   
   /* Change this in order to change the Dropdown symbol */
-  nav.top-menu li > a:after { content:  ' +'; }
+  nav.top-menu li > a:after { content:  ''; }
   nav.top-menu li > a:only-child:after { content: ''; }
 
   .header-wrapper > * {

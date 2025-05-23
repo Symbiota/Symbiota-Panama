@@ -38,11 +38,11 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 				?>
 			</nav>
 			<div class="top-brand">
-				<div class="image-container">
-					<a href="<?= $CLIENT_ROOT ?>">
-
-					</a>
-				</div>
+				<a href="<?= $CLIENT_ROOT ?>">
+					<div class="image-container">
+						<img src="<?= $CLIENT_ROOT ?>/images/layout/logo_stri.svg" alt="STRI logo">
+					</div>
+				</a>
 				<div class="brand-name">
 				</div>
 			</div>
@@ -87,6 +87,7 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=4" >Fishes</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=12">Insects &amp; Arachnids</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=11">Mammals</a></li>
+							<li><a href="https://invertebase.org/stri/projects/index.php?pid=4" target="_blank">Marine Invertebrates (Invert-E-Base)</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=10" >Plants</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=2" >Reptiles</a></li>
 						</ul>
