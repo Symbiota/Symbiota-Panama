@@ -63,10 +63,10 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 						<a href="#" ><?= $LANG['H_SEARCH'] ?></a>
 						<ul>
 							<li><a href="<?= $CLIENT_ROOT; ?>/collections/index.php" ><?= $LANG['H_COLLECTIONS_CLASSIC'] ?></a></li>
-							<li><a href="<?= $CLIENT_ROOT; ?>/collections/search/index.php" ><?= $LANG['H_COLLECTIONS_ADVANCED'] ?></a></li>
-							<li><a href="<?= $CLIENT_ROOT; ?>/collections/map/index.php" ><?= $LANG['H_MAP_SEARCH'] ?></a></li>
+							<li><a href="<?= $CLIENT_ROOT; ?>/collections/search/index.php" ><?= $LANG['H_COLLECTIONS_NEW'] ?></a></li>
 						</ul>
 					</li>
+					<li><a href="<?= $CLIENT_ROOT; ?>/collections/map/index.php" ><?= $LANG['H_MAP_SEARCH'] ?></a></li>
 					<li>
 						<a href="#" ><?= $LANG['H_IMAGES'] ?></a>
 						<ul>
@@ -77,6 +77,16 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 					<li>
 						<a href="#" ><?= $LANG['H_INVENTORIES'] ?></a>
 						<ul>
+							<li><a href="<?= $CLIENT_ROOT; ?>/checklists/checklist.php?clid=23" >Birds of Piñas Bay</a></li>
+							<li><a href="<?= $CLIENT_ROOT; ?>/checklists/checklist.php?clid=66" >Myrtaceae</a></li>
+							<li><a href="<?= $CLIENT_ROOT; ?>/checklists/checklist.php?clid=86" >Treehoppers of BCI</a></li>
+						</ul>
+					</li>
+					<!--
+					<li>
+						<a href="#" ><?= $LANG['H_INVENTORIES'] ?></a>
+						<ul>
+							Birds of Piñas Bay, Darién, Panama
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=20" >Barro Colorado Island</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=21" >Bocas del Toro</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=19" >Isla Coiba</a></li>
@@ -116,10 +126,13 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 							<li><a href="<?= $CLIENT_ROOT; ?>/checklists/dynamicmap.php?interface=checklist&tid=10350&taxa=Reptilia" >Reptiles</a></li>
 						</ul>
 					</li>
+					 -->
 					<li>
 						<a href="#" ><?= $LANG['H_GLOSSARY'] ?></a>
 						<ul>
+							<!--
 							<li><a href="<?= $CLIENT_ROOT; ?>/misc/glossarycover.php" >Background</a></li>
+							-->
 							<li><a href="<?= $CLIENT_ROOT; ?>/glossary/sources.php" >Contributors</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/glossary/index.php" ><?= $LANG['H_GLOSSARY_SEARCH'] ?></a></li>
 						</ul>

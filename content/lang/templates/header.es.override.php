@@ -10,7 +10,6 @@
 */
 
 $LANG['H_COLLECTIONS_CLASSIC'] = 'Búsqueda Clásica';
-$LANG['H_COLLECTIONS_ADVANCED'] = 'Búsqueda Avanzada';
-$LANG['H_SELECT_LANGUAGE'] = '';
+$LANG['H_COLLECTIONS_ADVANCED'] = 'Neuva Búsqueda';
 
 ?>
