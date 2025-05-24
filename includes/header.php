@@ -139,7 +139,6 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 						</ul>
 					</li>
 					<li id="lang-select-li">
-						<label for="language-selection"><?= $LANG['H_SELECT_LANGUAGE'] ?> </label>
 						<select oninput="setLanguage(this)" id="language-selection" name="language-selection">
 							<option value="en">English</option>
 							<option value="es" <?= ($LANG_TAG=='es'?'SELECTED':'') ?>>Español</option>
