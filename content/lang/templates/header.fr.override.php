@@ -11,5 +11,6 @@
 
 $LANG['H_COLLECTIONS_CLASSIC'] = 'Recherche Classique';
 $LANG['H_COLLECTIONS_ADVANCED'] = 'Nouvelle Recherche';
+$LANG['H_COLLECTION_LIST'] = 'Collections';
 
 ?>

@@ -64,6 +64,7 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 						<ul>
 							<li><a href="<?= $CLIENT_ROOT; ?>/collections/index.php" ><?= $LANG['H_COLLECTIONS_CLASSIC'] ?></a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/collections/search/index.php" ><?= $LANG['H_COLLECTIONS_NEW'] ?></a></li>
+							<li><a href="<?= $CLIENT_ROOT; ?>/collections/misc/collprofiles.php" ><?= $LANG['H_COLLECTION_LIST'] ?></a></li>
 						</ul>
 					</li>
 					<li><a href="<?= $CLIENT_ROOT; ?>/collections/map/index.php" ><?= $LANG['H_MAP_SEARCH'] ?></a></li>
