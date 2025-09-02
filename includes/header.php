@@ -138,6 +138,9 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 							<li><a href="<?= $CLIENT_ROOT; ?>/glossary/index.php" ><?= $LANG['H_GLOSSARY_SEARCH'] ?></a></li>
 						</ul>
 					</li>
+					<li>
+						<a href="<?= $CLIENT_ROOT; ?>/sitemap.php" ><?= $LANG['H_SITEMAP'] ?></a>
+					</li>
 					<li id="lang-select-li">
 						<select oninput="setLanguage(this)" id="language-selection" name="language-selection">
 							<option value="en">English</option>
