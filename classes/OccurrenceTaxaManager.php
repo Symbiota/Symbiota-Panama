@@ -259,6 +259,7 @@ class OccurrenceTaxaManager {
 		else{
 			$taxaStr = str_replace(';',',',$this->cleanInputStr($_REQUEST['taxa']));
 		}
+		$taxaStr = str_replace('_', ' ',$taxaStr);
 		if($taxaStr){
 			$this->taxaArr['search'] = $taxaStr;
 			//Set usage of taxonomic thesaurus
@@ -510,8 +511,8 @@ class OccurrenceTaxaManager {
 								/*
 								if(!strpos($term,' _ ')){
 									//Accommodate for formats of hybrid designations within input and target data (e.g. x, multiplication sign, etc)
-									$term2 = preg_replace('/^([^\s]+\s{1})/', '$1 _ ', $term);
-									$sqlWhereTaxa .= 'OR (o.sciname LIKE "' . $term2 . '%") ';
+									//$term2 = preg_replace('/^([^\s]+\s{1})/', '$1 _ ', $term);
+									//$sqlWhereTaxa .= 'OR (o.sciname LIKE "' . $term2 . '%") ';
 								}
 								*/
 							}
@@ -637,6 +638,7 @@ class OccurrenceTaxaManager {
 		$str = preg_replace('/%%+/', '%',$str);
 		$str = preg_replace('/^[\s%]+/', '',$str);
 		$str = trim($str,' ,;');
+		$str = preg_replace('/\s\s+/', ' ',$str);
 		if($str == '%') $str = '';
 		$str = strip_tags($str);
 		//$str = htmlspecialchars($str, ENT_NOQUOTES | ENT_SUBSTITUTE | ENT_HTML401);
