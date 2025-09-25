@@ -79,7 +79,8 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 						<a href="#" ><?= $LANG['H_INVENTORIES'] ?></a>
 						<ul>
 							<li><a href="<?= $CLIENT_ROOT; ?>/checklists/checklist.php?clid=23" >Birds of Piñas Bay</a></li>
-							<li><a href="<?= $CLIENT_ROOT; ?>/checklists/checklist.php?clid=66" >Myrtaceae</a></li>
+							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=20" >Barro Colorado Island</a></li>
+							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=10" >Plants of Panama</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/checklists/checklist.php?clid=86" >Treehoppers of BCI</a></li>
 						</ul>
 					</li>
@@ -87,8 +88,6 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 					<li>
 						<a href="#" ><?= $LANG['H_INVENTORIES'] ?></a>
 						<ul>
-							Birds of Piñas Bay, Darién, Panama
-							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=20" >Barro Colorado Island</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=21" >Bocas del Toro</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=19" >Isla Coiba</a></li>
 							<li>----------------------</li>
@@ -99,7 +98,6 @@ else include_once($SERVER_ROOT . '/content/lang/templates/header.' . $LANG_TAG .
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=12">Insects &amp; Arachnids</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=11">Mammals</a></li>
 							<li><a href="https://invertebase.org/stri/projects/index.php?pid=4" target="_blank">Marine Invertebrates (Invert-E-Base)</a></li>
-							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=10" >Plants</a></li>
 							<li><a href="<?= $CLIENT_ROOT; ?>/projects/index.php?pid=2" >Reptiles</a></li>
 						</ul>
 					</li>
