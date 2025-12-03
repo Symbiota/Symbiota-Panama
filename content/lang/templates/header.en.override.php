@@ -9,6 +9,8 @@
  e.g. override: $LANG['H_COLLECTIONS'] = 'Search Lichen Collections';
 */
 
-
+$LANG['H_COLLECTIONS_CLASSIC'] = 'Classic Search';
+$LANG['H_COLLECTIONS_ADVANCED'] = 'Advanced Search';
+$LANG['H_SELECT_LANGUAGE'] = '';
 
 ?>
