@@ -86,6 +86,28 @@ class OccurrenceCollectionProfile extends OmCollections{
 		return $retArr;
 	}
 
+	public function getDwcaPubDate(int $collid): string {
+		$pubDate = '';
+		if($collid){
+			$rssFile = $GLOBALS['SERVER_ROOT'].'/content/dwca/rss.xml';
+			if(file_exists($rssFile)){
+				try{
+					$xmlDoc = new DOMDocument();
+					$xmlDoc->load($rssFile);
+					$xpath = new DOMXPath($xmlDoc);
+
+					$query = '//item[@collid="' . intval($collid) . '"]/pubDate';
+					if($pubDateNode = $xpath->query($query)->item(0)){
+						$pubDate = $pubDateNode->nodeValue;
+					}
+				}
+				catch(Exception $e){
+				}
+			}
+		}
+		return $pubDate;
+	}
+
 	//Publishing functions
 	public function batchTriggerGBIFCrawl($collIdArr){
 		$sql = 'SELECT collid, collectionname, publishToGbif, dwcaUrl, aggKeysStr FROM omcollections WHERE CollID IN('.implode(',',$collIdArr).') ';
@@ -111,7 +133,7 @@ class OccurrenceCollectionProfile extends OmCollections{
 					$logPath = $GLOBALS['SERVER_ROOT'].(substr($GLOBALS['SERVER_ROOT'],-1)=='/'?'':'/').'content/logs/gbif/GBIF_'.date('Y-m-d').'.log';
 					$this->setLogFH($logPath);
 				}
-				$this->logOrEcho('Starting GBIF harvest for: '.$collectionName.' (#'.$collid.')');
+				$this->logOrEcho('Starting GBIF harvest for: '.$collectionName.' (#'.$collid.')', 1);
 				if($this->datasetKey){
 					if($dwcUri){
 						//Get dataset details to enose that endpoint and publishingOrganizationKey is still valid
@@ -119,7 +141,7 @@ class OccurrenceCollectionProfile extends OmCollections{
 						if($curlRet = $this->gbifCurlCall($dsUrl)){
 							$datasetArr = json_decode($curlRet,true);
 							//Check endpoint
-							$this->logOrEcho('Verifying Endpoints...', 1);
+							$this->logOrEcho('Verifying Endpoints...', 2);
 							$endpointArr = $datasetArr['endpoints'];
 							$epUrl = $dsUrl.'/endpoint';
 							$addEndpoint = true;
@@ -127,31 +149,31 @@ class OccurrenceCollectionProfile extends OmCollections{
 								if($epArr['url'] == $dwcUri) $addEndpoint = false;
 								else{
 									if(isset($epArr['key'])){
-										$this->logOrEcho('Deleting Endpoint (#'.$epArr['key'].': '.$epArr['url'].')...', 2);
+										$this->logOrEcho('Deleting Endpoint (#'.$epArr['key'].': '.$epArr['url'].')...', 3);
 										if(!$this->gbifCurlCall($epUrl.'/'.$epArr['key'], 'DELETE')){
-											if($this->errorMessage) $this->logOrEcho('ERROR deleting Endpoint: '.$this->errorMessage, 3);
+											if($this->errorMessage) $this->logOrEcho('ERROR deleting Endpoint: '.$this->errorMessage, 4);
 										}
 									}
 								}
 							}
 							if($addEndpoint){
 								//Add new endpoint
-								$this->logOrEcho('Adding new Endpoint (url: '.$dwcUri.')...', 2);
+								$this->logOrEcho('Adding new Endpoint (url: '.$dwcUri.')...', 3);
 								$dataStr = json_encode( array( 'type' => 'DWC_ARCHIVE','url' => $dwcUri ) );
 								if($endpointStr = $this->gbifCurlCall($epUrl, 'POST', $dataStr)){
 									if(!strpos($endpointStr,' ') && strlen($endpointStr) == 36) $this->endpointKey = $endpointStr;
 								}
-								else $this->logOrEcho('ERROR adding Endpoint: '.$this->errorMessage, 2);
+								else $this->logOrEcho('ERROR adding Endpoint: '.$this->errorMessage, 3);
 							}
 							//Check publishingOrganizationKey
 							if(isset($datasetArr['publishingOrganizationKey'])){
 								if($datasetArr['publishingOrganizationKey'] != $this->organizationKey){
 									//Update publishingOrganizationKey
-									$this->logOrEcho('Updating publishingOrganizationKey from '.$datasetArr['publishingOrganizationKey'].' to '.$this->organizationKey, 1);
+									$this->logOrEcho('Updating publishingOrganizationKey from '.$datasetArr['publishingOrganizationKey'].' to '.$this->organizationKey, 2);
 									$datasetArr['publishingOrganizationKey'] = $this->organizationKey;
 									$dataStr = json_encode( $datasetArr );
 									if(!$this->gbifCurlCall($dsUrl, 'PUT', $dataStr)){
-										if($this->errorMessage) $this->logOrEcho('ERROR updating publishingOrganizationKey: '.$this->errorMessage, 2);
+										if($this->errorMessage) $this->logOrEcho('ERROR updating publishingOrganizationKey: '.$this->errorMessage, 3);
 									}
 								}
 							}
@@ -159,16 +181,16 @@ class OccurrenceCollectionProfile extends OmCollections{
 						else echo 'ERROR grabbing data from GBIF API: '.$this->errorMessage;
 					}
 					//Trigger Crawl
-					$this->logOrEcho('Triggering crawl...', 1);
+					$this->logOrEcho('Triggering crawl...', 2);
 					$crawlUrl = 'https://api.gbif.org/v1/dataset/'.$this->datasetKey.'/crawl';
 					if(!$this->gbifCurlCall($crawlUrl, 'POST')){
-						if($this->errorMessage) $this->logOrEcho('ERROR triggering crawl: '.$this->errorMessage, 2);
+						if($this->errorMessage) $this->logOrEcho('ERROR triggering crawl: '.$this->errorMessage, 3);
 					}
-					$this->logOrEcho('Done!', 1);
+					$this->logOrEcho('Done!', 2);
 				}
-				else $this->logOrEcho('ABORT GBIF publishing: datasetKey IS NULL');
+				else $this->logOrEcho('ABORT GBIF publishing: datasetKey IS NULL', 2);
 			}
-			else $this->logOrEcho('ABORT GBIF publishing: organizationKey IS NULL');
+			else $this->logOrEcho('ABORT GBIF publishing: organizationKey IS NULL', 2);
 		}
 	}
 
@@ -338,7 +360,7 @@ class OccurrenceCollectionProfile extends OmCollections{
 			$cnt = $r->cnt;
 			if($state){
 				$t = trim(str_ireplace(array(' county',' co.',' counties'),'',$t));
-				if(array_key_exists($t, $retArr)) $cnt = $cnt + $retArr[$t];
+				if($t && array_key_exists($t, $retArr)) $cnt = $cnt + $retArr[$t]['cnt'];
 			}
 			if($t){
 				$retArr[$t]['cnt'] = $cnt;
@@ -392,7 +414,7 @@ class OccurrenceCollectionProfile extends OmCollections{
 	public function getBasicStats(){
 		$retArr = array();
 		if($this->collid){
-			$sql = 'SELECT uploaddate, recordcnt, georefcnt, familycnt, genuscnt, speciescnt, dynamicProperties FROM omcollectionstats WHERE collid = '.$this->collid;
+			$sql = 'SELECT uploaddate, recordcnt, georefcnt, familycnt, genuscnt, speciescnt, dynamicProperties, datelastmodified FROM omcollectionstats WHERE collid = '.$this->collid;
 			$rs = $this->conn->query($sql);
 			if($row = $rs->fetch_object()){
 				$uDate = "";
@@ -410,6 +432,11 @@ class OccurrenceCollectionProfile extends OmCollections{
 				$retArr['genuscnt'] = $row->genuscnt;
 				$retArr['speciescnt'] = $row->speciescnt;
 				$retArr['dynamicProperties'] = $row->dynamicProperties;
+				$mDate = "";
+				if($row->datelastmodified){
+					$mDate = date("j F Y", strtotime($row->datelastmodified));
+				}
+				$retArr['datelastmodified'] = $mDate;
 			}
 			$rs->free();
 		}
@@ -423,22 +450,26 @@ class OccurrenceCollectionProfile extends OmCollections{
 			echo '<ul>';
 			$occurMaintenance->setVerbose(true);
 			echo '<li>General cleaning in preparation for collecting stats...</li>';
-			flush();
-			ob_flush();
+			$this->flushOutput();
 		}
 		$occurMaintenance->generalOccurrenceCleaning();
 		//$occurMaintenance->batchUpdateGeoreferenceIndex();
 		if($verbose){
 			echo '<li>Updating statistics...</li>';
-			flush();
-			ob_flush();
+			$this->flushOutput();
 		}
 		$occurMaintenance->updateCollectionStatsFull();
 		if($verbose){
 			echo '<li>Finished updating collection statistics</li>';
-			flush();
+			$this->flushOutput();
+		}
+	}
+
+	private function flushOutput(){
+		if(ob_get_level() > 0){
 			ob_flush();
 		}
+		flush();
 	}
 
 	public function getStatCollectionList($catId = ""){
@@ -504,8 +535,7 @@ class OccurrenceCollectionProfile extends OmCollections{
 			echo 'Updating collection statistics...';
 			echo '<ul>';
 			//echo '<li>General cleaning in preparation for collecting stats... </li>';
-			flush();
-			ob_flush();
+			$this->flushOutput();
 			$occurMaintenance = new OccurrenceMaintenance();
 			//$occurMaintenance->generalOccurrenceCleaning();
 			$sql = 'SELECT collid, collectionname FROM omcollections WHERE collid IN('.$collId.') ';
@@ -513,20 +543,18 @@ class OccurrenceCollectionProfile extends OmCollections{
 			$rs = $this->conn->query($sql);
 			while($r = $rs->fetch_object()){
 				echo '<li style="margin-left:15px;">Cleaning statistics for: '.$r->collectionname.'</li>';
-				flush();
-				ob_flush();
+				$this->flushOutput();
 				$occurMaintenance->setCollidStr($r->collid);
 				$occurMaintenance->updateCollectionStatsFull();
 			}
 			$rs->free();
 			echo '<li>Statistics update complete!</li>';
 			echo '</ul>';
-			flush();
-			ob_flush();
+			$this->flushOutput();
 		}
 	}
 
-	public function runStatistics($collId){
+	public function runStatistics($collId, $ignoreUpdate = false){
 		$returnArr = Array();
 		if(preg_match('/^[0-9,]+$/',$collId)){
 			$sql = 'SELECT c.collid, c.CollectionName, IFNULL(s.recordcnt,0) AS recordcnt, IFNULL(s.georefcnt,0) AS georefcnt, s.dynamicProperties '.
@@ -578,6 +606,32 @@ class OccurrenceCollectionProfile extends OmCollections{
 				$returnArr['speciescnt'] = $r->SpeciesCount;
 				$returnArr['TotalTaxaCount'] = $r->TotalTaxaCount;
 				$returnArr['TotalImageCount'] = $r->TotalImageCount;
+			}
+			$rs->free();
+		}
+		return $returnArr;
+	}
+
+	public function getDedupedTaxaCounts($collId){
+		$returnArr = array(
+			'FamilyCount' => 0,
+			'GeneraCount' => 0,
+			'SpeciesCount' => 0,
+			'TotalTaxaCount' => 0
+		);
+		if(preg_match('/^[0-9,]+$/',$collId)){
+			$sql = 'SELECT COUNT(DISTINCT o.family) AS FamilyCount, '.
+				'COUNT(DISTINCT CASE WHEN t.RankId >= 180 THEN t.UnitName1 ELSE NULL END) AS GeneraCount, '.
+				'COUNT(DISTINCT CASE WHEN t.RankId = 220 THEN t.SciName ELSE NULL END) AS SpeciesCount, '.
+				'COUNT(DISTINCT CASE WHEN t.RankId >= 220 THEN t.SciName ELSE NULL END) AS TotalTaxaCount '.
+				'FROM omoccurrences o LEFT JOIN taxa t ON o.tidinterpreted = t.TID '.
+				'WHERE o.collid IN('.$collId.') ';
+			$rs = $this->conn->query($sql);
+			if($r = $rs->fetch_object()){
+				$returnArr['FamilyCount'] = (int)$r->FamilyCount;
+				$returnArr['GeneraCount'] = (int)$r->GeneraCount;
+				$returnArr['SpeciesCount'] = (int)$r->SpeciesCount;
+				$returnArr['TotalTaxaCount'] = (int)$r->TotalTaxaCount;
 			}
 			$rs->free();
 		}
@@ -741,7 +795,7 @@ class OccurrenceCollectionProfile extends OmCollections{
 				'c.collectionname, month(m.InitialTimeStamp) as monthEntered, year(m.InitialTimeStamp) as yearEntered, '.
 				'COUNT(m.mediaID) AS imgcnt '.
 				'FROM omoccurrences AS o INNER JOIN omcollections AS c ON o.collid = c.collid '.
-				'LEFT JOIN media AS i ON o.occid = m.occid '.
+				'LEFT JOIN media AS m ON o.occid = m.occid '.
 				'WHERE o.collid in('.$collId.') AND datediff(curdate(), m.InitialTimeStamp) < '.$days.' '.
 				'GROUP BY yearEntered,monthEntered,o.collid ORDER BY c.collectionname ';
 			//echo $sql2;
