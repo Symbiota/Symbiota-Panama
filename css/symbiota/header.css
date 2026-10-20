@@ -18,6 +18,7 @@ header {
 .top-wrapper {
   background-color: var(--menu-top-bg-color);
   min-width: 0;
+  height: 100px
 }
 
 .top-login {
@@ -114,6 +115,7 @@ header a:hover {
   min-width: 0;
   text-align: center;
   width: 100%;
+  max-width: 1440px;
 }
 
 .top-menu {
@@ -283,7 +285,6 @@ ul.menu > ul li{
   }
   
   /* Change this in order to change the Dropdown symbol */
-  nav.top-menu li > a:after { content:  ' +'; }
   nav.top-menu li > a:only-child:after { content: ''; }
 
   .header-wrapper > * {
@@ -314,7 +315,8 @@ ul.menu > ul li{
     align-items: center;
     min-width: 0;
     width: 100%;
-    padding: 1rem 0;
+    padding-left: 15%;
+    padding-right: 15%;
   }
 
   .top-login {
@@ -344,8 +346,8 @@ ul.menu > ul li{
     max-height: none;
     position: relative;
     text-align: center;
-    padding-top: 0.75rem;
-    padding-bottom: 0.75rem;
+    padding-top: 5px;
+    padding-bottom: 5px;
   }
 
   ul.menu * {
